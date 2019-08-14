@@ -13,73 +13,70 @@
 
     <header>
         <!-- <img class="logo" src="/img/FirstBank_Logo.jpg.png" alt="FirstBank Logo"> -->
-        <img src="/img/firstbankLogo.png" alt="">
+        <img src="img/firstbankLogo.png" alt="FirstBank Logo">
         <h2 class="title">E-Statement</h2>
     </header>
     <main>
-        <form>
-            <p class="input">
-                <label>Account Number:</label>
-                <input type="text" placeholder="Account Number">
+        <!-- <form> -->
+        <p class="input">
+            <label>Account Number:</label>
+            <input onblur="fetchAccount()" id="accountNumber" type="text" placeholder="Account Number">
+        </p>
+
+
+        <div class="details">
+            <p><label>Name:</label>
+                <input id="fullName" type="text" disabled placeholder="Full Name" />
             </p>
 
+            <p><label>Account type:</label>
+                <input id="accountType" type="text" disabled placeholder="Account Type">
+            </p>
 
-            <div class="details">
-                <p><label>First Name:</label>
-                    <input type="text" disabled placeholder="First Name" />
-                </p>
+            <p><label>Email:</label>
+                <input id="email" type="email" disabled>
+            </p>
+        </div>
 
-                <p><label>Last Name:</label>
-                    <input type="text" disabled placeholder="Last Name">
-                </p>
+        <div class="dates">
+            <p>
+                <label>Start Date: </label>
+                <input required id="startDate" type="date">
+            </p>
+            <p>
+                <label>End Date: </label>
+                <input required id="endDate" type="date">
+            </p>
+        </div>
 
-                <p><label>Account type:</label>
-                    <input type="text" disabled placeholder="Account Type">
-                </p>
+        <div class="choice">
+            <p>
+                <input type="radio" name="type">
+                <label>Email</label>
+            </p>
 
-                <p><label>Email:</label>
-                    <input type="email" disabled>
-                </p>
-            </div>
+            <p>
+                <input type="radio" name="type">
+                <label>Print a letter</label>
+            </p>
+            <p>
+                <input type="radio" name="type">
+                <label>None</label>
+            </p>
+        </div>
 
-            <div class="dates">
-                <p>
-                    <label>Start Date: </label>
-                    <input type="date">
-                </p>
-                <p>
-                    <label>End Date: </label>
-                    <input type="date">
-                </p>
-            </div>
-
-            <div class="choice">
-                <p>
-                    <input type="radio" name="type">
-                    <label>Email</label>
-                </p>
-
-                <p>
-                    <input type="radio" name="type">
-                    <label>Print a letter</label>
-                </p>
-                <p>
-                    <input type="radio" name="type">
-                    <label>None</label>
-                </p>
-            </div>
-
-            <div class="charge">
-                <label>Do not charge customer: </label>
-                <input type="checkbox">
-            </div>
-            <footer>
-                <input type="submit" value="Submit">
-                <input type="reset" value="Cancel">
-            </footer>
-        </form>
+        <div class="charge">
+            <label>Do not charge customer: </label>
+            <input required type="checkbox">
+        </div>
+        <footer>
+            <button onclick="checkSubmit()">Request</button>
+            <input type="reset" value="Cancel">
+        </footer>
+        <!-- </form> -->
     </main>
 
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="api.js"></script>
 </body>
 
