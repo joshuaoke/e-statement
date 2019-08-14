@@ -1,50 +1,57 @@
 //function to fetch account details
-function fetchAccount() {
-  const accountNumber = document.getElementById("accountNumber").value;
-  //url for the service
-  const url = "https://nodered.dipolediamond.com/account/" + accountNumber;
-  axios
-    .get(url)
-    .then(function(response) {
-      if (response.status == 200) {
-        //if status is 200, populate values for name and account type
-        document.getElementById("fullName").value = response.data.name;
-        document.getElementById("accountType").value =
-          response.data.account_type;
+document
+  .getElementById("accountNumber")
+  .addEventListener("change", function fetchAccount() {
+    const accountNumber = document.getElementById("accountNumber").value;
+    //url for the service
+    const url = "https://nodered.dipolediamond.com/account/" + accountNumber;
+    axios
+      .get(url)
+      .then(function(response) {
+        if (response.status == 200) {
+          //if status is 200, populate values for name and account type
+          document.getElementById("fullName").value = response.data.name;
+          document.getElementById("accountType").value =
+            response.data.account_type;
 
-        //if no email, alert else put value
-        if (response.data.email == "") {
-          alert("Account has no email to receive statement");
+          //if no email, alert else put value
+          if (response.data.email == "") {
+            alert("Account has no email to receive statement");
+          } else {
+            document.getElementById("email").value = response.data.email;
+          }
+          //account number does not exist
         } else {
-          document.getElementById("email").value = response.data.email;
+          alert("Sorry! Incorrect Account Number");
         }
-        //account number does not exist
-      } else {
-        alert("Sorry! Incorrect Account Number");
-      }
-    })
-    .catch(function(error) {
-      console.log(error);
-    });
-}
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  });
 
 //function to check and alert ok
-function checkSubmit() {
-  let name = document.getElementById("fullName").value;
-  let account_type = document.getElementById("accountType").value;
-  let email = document.getElementById("email").value;
-  let endDate = document.getElementById("endDate").value;
-  let startDate = document.getElementById("startDate").value;
+document
+  .getElementById("submit")
+  .addEventListener("click", function checkSubmit(event) {
+    //event.preventDefault();
 
-  if (
-    name != "" &&
-    account_type != "" &&
-    email != "" &&
-    endDate != "" &&
-    startDate != ""
-  ) {
-    alert("OK!");
-  } else {
-    alert("Some Parameters are missing");
-  }
-}
+    let name = document.getElementById("fullName").value;
+    let account_type = document.getElementById("accountType").value;
+    let email = document.getElementById("email").value;
+    let endDate = document.getElementById("endDate").value;
+    let startDate = document.getElementById("startDate").value;
+
+    if (
+      name != "" &&
+      account_type != "" &&
+      email != "" &&
+      endDate != "" &&
+      startDate != ""
+    ) {
+      alert("OK!");
+      // document.getElementById("requestForm").submit();
+    } else {
+      alert("Missing Parameters");
+    }
+  });
