@@ -6,74 +6,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>E-Statement</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
 </head>
 
-<body>
+<body class="container">
 
-    <header>
-        <!-- <img class="logo" src="/img/FirstBank_Logo.jpg.png" alt="FirstBank Logo"> -->
-        <img src="img/firstbankLogo.png" alt="FirstBank Logo">
-        <h2 class="title">E-Statement</h2>
+    <header class="hero">
+        <div class="hero-body">
+            <div class="container">
+                <img class="has-text-grey-lighter" src="img/firstbankLogo.png" alt="FirstBank Logo">
+                <h2 class="title has-text-grey-lighter">E-Statement</h2>
+            </div>
+        </div>
     </header>
-    <main>
-        <!-- <form> -->
-        <p class="input">
-            <label>Account Number:</label>
-            <input onblur="fetchAccount()" id="accountNumber" type="text" placeholder="Account Number">
-        </p>
 
+    <main class="box">
+        <form>
+            <!-- account number here -->
+            <div class="field">
+                <label class="label">Account Number</label>
+                <div class="control">
+                    <input onblur="fetchAccount()" id="accountNumber" class="input is-info" id="accountType" type="text"
+                        placeholder="Account Number">
+                </div>
+            </div>
 
-        <div class="details">
-            <p><label>Name:</label>
-                <input id="fullName" type="text" disabled placeholder="Full Name" />
-            </p>
+            <!-- details to be fetched from service -->
+            <div class="details box">
+                <!-- full name -->
+                <div class="field">
+                    <label class="label">Name</label>
+                    <div class="control">
+                        <input id="fullName" class="input is-info" readonly type="text" placeholder="Full Name">
+                    </div>
+                </div>
 
-            <p><label>Account type:</label>
-                <input id="accountType" type="text" disabled placeholder="Account Type">
-            </p>
+                <!-- account type -->
+                <div class="field">
+                    <label class="label">Account Type</label>
+                    <div class="control">
+                        <input class="input is-info" id="accountType" readonly type="text" placeholder="Text input">
+                    </div>
+                </div>
 
-            <p><label>Email:</label>
-                <input id="email" type="email" disabled>
-            </p>
-        </div>
+                <!-- email -->
+                <div class="field">
+                    <label class="label">Email</label>
+                    <div class="control">
+                        <input id="email" class="input is-info" readonly type="email" placeholder="Email">
+                    </div>
+                </div>
+            </div>
 
-        <div class="dates">
-            <p>
-                <label>Start Date: </label>
-                <input required id="startDate" type="date">
-            </p>
-            <p>
-                <label>End Date: </label>
-                <input required id="endDate" type="date">
-            </p>
-        </div>
+            <div class="dates box">
+                <!-- start date field -->
+                <div class="field">
+                    <label class="label">Start Date</label>
+                    <div class="control">
+                        <input id="startDate" class="input is-info" type="date" placeholder="Start Date">
+                    </div>
+                </div>
 
-        <div class="choice">
-            <p>
-                <input type="radio" name="type">
-                <label>Email</label>
-            </p>
-
-            <p>
-                <input type="radio" name="type">
-                <label>Print a letter</label>
-            </p>
-            <p>
-                <input type="radio" name="type">
-                <label>None</label>
-            </p>
-        </div>
-
-        <div class="charge">
-            <label>Do not charge customer: </label>
-            <input required type="checkbox">
-        </div>
-        <footer>
-            <button onclick="checkSubmit()">Request</button>
-            <input type="reset" value="Cancel">
-        </footer>
-        <!-- </form> -->
+                <!-- end date field -->
+                <div class="field">
+                    <label class="label">End Date</label>
+                    <div class="control">
+                        <input id="endDate" class="input is-info" type="date" placeholder="End Date">
+                    </div>
+                </div>
+                <br>
+                <!-- choose type field -->
+                <div class="field">
+                    <label class="label">Type</label>
+                    <div class="control">
+                        <label class="radio">
+                            <input type="radio" name="type">
+                            Email
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="type">
+                            Print Letter
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="type">
+                            None
+                        </label>
+                    </div>
+                </div>
+                <!-- checkbox -->
+                <div class="charge">
+                    <label class="checkbox">
+                        Do not charge customer
+                        <input type="checkbox" name="charge" required>
+                    </label>
+                </div>
+            </div>
+            <div class="buttons">
+                <button class="button is-link" onclick="checkSubmit()">Request</button>
+                <input class="button is-danger" type="reset" value="Cancel">
+            </div>
+        </form>
     </main>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
