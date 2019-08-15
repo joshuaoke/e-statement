@@ -6,22 +6,11 @@ function fetchAccount() {
   axios
     .get(url)
     .then(function(response) {
-      if (response.status == 200) {
-        //if status is 200, populate values for name and account type
+      
         document.getElementById("fullName").value = response.data.name;
-        document.getElementById("accountType").value =
-          response.data.account_type;
-
-        //if no email, alert else put value
-        if (response.data.email == "") {
-          alert("Account has no email to receive statement");
-        } else {
-          document.getElementById("email").value = response.data.email;
-        }
-        //account number does not exist
-      } else {
-        alert("Sorry! Incorrect Account Number");
-      }
+        document.getElementById("accountType").value = response.data.account_type;
+        document.getElementById("email").value = response.data.email;
+                
     })
     .catch(function(error) {
       console.log(error);
