@@ -22,13 +22,13 @@
     </header>
 
     <main class="box">
-        <form>
+        <form id="requestForm">
             <!-- account number here -->
             <div class="field">
                 <label class="label">Account Number</label>
                 <div class="control">
-                    <input onchange="fetchAccount()" id="accountNumber" class="input is-info" id="accountType"
-                        type="text" placeholder="Account Number">
+                    <input id="accountNumber" class="input is-info" id="accountType" type="text"
+                        placeholder="Account Number">
                 </div>
             </div>
 
@@ -106,7 +106,7 @@
                 </div>
             </div>
             <div class="buttons">
-                <button class="button is-link" onclick="checkSubmit()">Request</button>
+                <button id="submit" class="button is-link" type="submit">Request</button>
                 <input class="button is-danger" type="reset" value="Cancel">
             </div>
         </form>
